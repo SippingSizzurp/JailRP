@@ -198,6 +198,23 @@ local Button = Tab4:CreateButton({
         end
 })
 
+local Keybind = Tab4:CreateKeybind({
+	Name = "Delete What Mouse Is On",
+	CurrentKeybind = "G",
+	HoldToInteract = false,
+	Flag = "Keybind1",
+	Callback = function(Keybind)
+		-- Get the mouse and the part currently being hovered
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		local part = mouse.Target
+
+		-- Check if the target is a part and destroy it if it is
+		if part and part:IsA("BasePart") then
+			part:Destroy()
+		end
+	end,
+})
+
 local Button = Tab4:CreateButton({
     Name = "Delete Everything (WIP)",
     Callback = function()
