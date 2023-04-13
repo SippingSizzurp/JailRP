@@ -226,7 +226,31 @@ local Button = Tab4:CreateButton({
     Callback = function()
         local map = game:GetService("Workspace").Doors:GetChildren()
         local map1 = game:GetService("Workspace").Map:GetChildren()
+        local map2 = game:GetService("Workspace").TopFloor:GetChildren()
         local searchString = "Door"
+
+        for i, v in ipairs(map2) do
+            if string.find(v.Name, "Model") then
+                local subfolder = v:GetChildren()
+                for j, child in ipairs(subfolder) do
+                    if string.find(child.Name, "WindowMetalDoor") then 
+                        child:Destroy()
+                    end
+                end
+            end
+            
+            if string.find(v.Name, "WoodDoor") then
+                v:Destroy()
+            end
+            
+            if string.find(v.Name, "WindowMetalDoor") or v.name == "GlassDoor" then
+                v:Destroy()
+            end
+            
+            if v.name == "MetalDoor" then
+                v:Destroy()
+            end
+        end
 
         for i, v in ipairs(map) do
             if string.find(v.Name, searchString) then
@@ -258,4 +282,36 @@ local Button = Tab4:CreateButton({
             end
         end
     end
+})
+
+local Button = Tab4:CreateButton({
+    Name = "Delete min/med",
+    Callback = function()
+        
+        local map1 = game:GetService("Workspace").Map:GetChildren()
+        local searchString = "wall"
+        
+        for i, v in ipairs(map1) do
+            if v:IsA("Folder") and string.find(v.Name, "Cell") then
+                v:Destroy()
+            end
+            
+            if string.find(v.Name, "HitboxNoclimb") then
+                v:Destroy()
+            end
+            
+            if string.find(v.Name, "Model") then
+                v:Destroy()
+            end
+            
+            if v:IsA("Folder") and string.find(v.Name, "Bricks") then
+                v:Destroy()
+            end
+            
+            if v.Name == "Part" and v.Color == Color3.fromRGB(172, 172, 172) then
+                v:Destroy()
+            end
+        end
+    end
+    
 })
