@@ -199,7 +199,7 @@ local Button = Tab4:CreateButton({
 })
 
 local Button = Tab4:CreateButton({
-    Name = "Delete Walls",
+    Name = "Delete Everything (WIP)",
     Callback = function()
         local map = game:GetService("Workspace").Map:GetChildren()
         local map1 = game:GetService("Workspace").TopFloor:GetChildren()
